@@ -1,30 +1,17 @@
-from dataclasses import dataclass
+"""
+--target argument parser for CdM architectures.
+Example:
+  cdm16e   -> base = "cdm16", extensions = ["e"]
+  cdm16em  -> base = "cdm16", extensions = ["e", "m"]
+  cdm8     -> base = "cdm8", extensions = []
+"""
 
-@dataclass
-class TargetInfo:
-    base: str
-    extensions: list[str]
+from typing import Tuple, List
 
-def parse_target(target: str) -> TargetInfo:
+def parse_target(target: str) -> Tuple[str, List[str]]:
     """
-    Parse the ``--target`` argument into a :class:`TargetInfo` structure.
-
-    :param target: name of processor, optionally containing concatenated extension letters.
-    :return TargetInfo: dataclass containing a base target name and a list of extensions.
-
-    Examples
-    --------
-    >>> parse_target("cdm-16")
-    TargetInfo(base="cdm16", extensions=[])
-
-    >>> parse_target("cdm16em")
-    TargetInfo(base="cdm16", extensions=["e", "m"])
-
-    >>> parse_target("8")
-    TargetInfo(base="cdm8", extensions=[])
-
-    >>> parse_target("cdm8e")
-    TargetInfo(base="cdm8e", extensions=[])
+    Parse the --target argument and return:
+        (base_target, list_of_extensions)
     """
     target = target.replace("-", "").lower()
 
@@ -45,5 +32,4 @@ def parse_target(target: str) -> TargetInfo:
         suffix = ""
 
     extensions = list(suffix)
-    return TargetInfo(base=base, extensions=extensions)
-
+    return base, extensions

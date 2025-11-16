@@ -7,7 +7,7 @@ from typing import Union
 import colorama
 
 from cocas import exception_handlers as handlers
-from cocas.assembler import AssemblerException, assemble_files, list_assembler_targets, read_mlb, parse_target, list_target_extensions
+from cocas.assembler import AssemblerException, assemble_files, list_assembler_targets, read_mlb, parse_target
 from cocas.exception_handlers import log_error
 from cocas.linker import LinkerException, list_linker_targets, target_link, write_debug_export, write_image
 from cocas.object_file import ObjectFileException, list_object_targets, read_object_files, write_object_file
@@ -39,11 +39,8 @@ def main():
     if args.list_targets:
         print('Available targets: ' + ', '.join(available_targets))
         return
-    target_info = parse_target(args.target)
-    target = target_info.base
-    extensions = target_info.extensions
-    available_extensions = sorted(list_target_extensions(target))
-    unknown_extensions = [ext for ext in extensions if ext not in available_extensions]
+    base_target, extensions = parse_target(args.target)
+    target = base_target
 
     if target not in available_targets:
         log_error("Main", 'Unknown target ' + target)
