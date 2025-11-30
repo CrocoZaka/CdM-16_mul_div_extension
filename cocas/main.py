@@ -39,8 +39,8 @@ def main():
     if args.list_targets:
         print('Available targets: ' + ', '.join(available_targets))
         return
-    base_target, extensions = parse_target(args.target)
-    target = base_target
+    target_info = parse_target(args.target)
+    target = target_info.base
 
     if target not in available_targets:
         log_error("Main", 'Unknown target ' + target)
@@ -89,7 +89,7 @@ def main():
     try:
         macro_libraries = [read_mlb(mlb) for mlb in mlb_files]
         objects: list[tuple[Path, ObjectModule]] = list(itertools.chain(
-            assemble_files(target, asm_files, bool(args.debug), relative_path, absolute_path, realpath,
+            assemble_files(target_info, asm_files, bool(args.debug), relative_path, absolute_path, realpath,
                            macro_libraries=macro_libraries),
             read_object_files(target, obj_files, bool(args.debug), relative_path, absolute_path, realpath)
         ))
