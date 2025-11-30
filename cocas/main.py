@@ -39,8 +39,8 @@ def main():
     if args.list_targets:
         print('Available targets: ' + ', '.join(available_targets))
         return
-    base_target, extensions = parse_target(args.target)
-    target = base_target
+    target_info = parse_target(args.target)
+    target = target_info.base
 
     if target not in available_targets:
         log_error("Main", 'Unknown target ' + target)
