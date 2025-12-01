@@ -40,7 +40,12 @@ sign_extend,
 
 mem,
 data,
-read
+read,
+
+r_latchx,
+r_asrtDX,
+alu_asrtDX,
+DXa
 
 #####################
 #
@@ -126,7 +131,7 @@ addsp:          sp_asrt0, r_asrt1, alu_asrtD, sp_latch
 
 # 2op
 move:           r_asrt0, alu_asrtD, r_latch, ps_latch_flags
-2op_1:
+2op_1:		
 2op_2:
 2op_3:
 2op_4:
@@ -139,7 +144,7 @@ move:           r_asrt0, alu_asrtD, r_latch, ps_latch_flags
 2op_B:
 2op_C:
 2op_D:
-2op_E:
+mul:			DXa, r_asrt0, r_asrtDX, alu_asrtD, alu_asrtDX, r_latch,r_latchx
 2op_F:
 
 # mem2
