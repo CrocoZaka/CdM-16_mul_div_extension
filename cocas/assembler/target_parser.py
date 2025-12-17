@@ -4,16 +4,28 @@ from dataclasses import dataclass
 class TargetInfo:
     base: str
     extensions: list[str]
-'''
---target argument parser for CdM architectures.
-Example:
-   cdm16   -> TargetInfo(base = "cdm16", extensions = [])
-   cdm16em  -> TargetInfo(base = "cdm16", extensions = ["e", "m"])
-   cdm8     -> TargetInfo(base = "cdm8", extensions = [])
-!  cdm8e    -> TargetInfo(base = "cdm8e", extensions = [])
-'''
 
 def parse_target(target: str) -> TargetInfo:
+    """
+    Parse the ``--target`` argument into a :class:`TargetInfo` structure.
+
+    :param target: name of processor, optionally containing concatenated extension letters.
+    :return TargetInfo: dataclass containing a base target name and a list of extensions.
+
+    Examples
+    --------
+    >>> parse_target("cdm-16")
+    TargetInfo(base="cdm16", extensions=[])
+
+    >>> parse_target("cdm16em")
+    TargetInfo(base="cdm16", extensions=["e", "m"])
+
+    >>> parse_target("8")
+    TargetInfo(base="cdm8", extensions=[])
+
+    >>> parse_target("cdm8e")
+    TargetInfo(base="cdm8e", extensions=[])
+    """
     target = target.replace("-", "").lower()
 
     if not target.startswith("cdm"):

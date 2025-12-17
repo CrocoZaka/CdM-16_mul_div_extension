@@ -59,7 +59,7 @@ def assemble_files(target: TargetInfo,
     """
     Open and assemble multiple files into object modules
 
-    :param target: name of processor, should be valid
+    :param target: dataclass containing name of processor target and list of extensions, name should be valid
     :param files: list of assembler files' paths to process
     :param debug: if debug information should be collected
     :param relative_path: if debug paths should be relative to some path

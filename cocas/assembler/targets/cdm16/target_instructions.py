@@ -413,7 +413,7 @@ handlers = [
 def assembly_directives():
     return {'ds', 'dc', 'db', 'dw'}
 
-def update_handlers(new_handlers: list["Handler"]):
+def update_handlers(new_handlers: list[Handler]):
     """
     Replace global handlers list with merged handlers.
     Used when target extensions are loaded.
