@@ -98,7 +98,7 @@ def main():
         objects: list[tuple[Path, ObjectModule]] = list(itertools.chain(
             assemble_files(target_info, asm_files, bool(args.debug), relative_path, absolute_path, realpath,
                            macro_libraries=macro_libraries),
-            read_object_files(target, obj_files, bool(args.debug), relative_path, absolute_path, realpath)
+            read_object_files(target_info, obj_files, bool(args.debug), relative_path, absolute_path, realpath)
         ))
     except AssemblerException as e:
         handlers.log_asm_exception(e)
@@ -113,14 +113,14 @@ def main():
     try:
         if args.merge:
             write_object_file((args.output or 'merged.obj'), [tup[1] for tup in objects],
-                              target, bool(args.debug or args.merge))
+                              target_info, bool(args.debug or args.merge))
         elif args.compile and args.output:
-            write_object_file(args.output, [tup[1] for tup in objects], target, bool(args.debug))
+            write_object_file(args.output, [tup[1] for tup in objects], target_info, bool(args.debug))
         elif args.compile:
             for path, obj in objects:
-                write_object_file(path.with_suffix('.obj').name, [obj], target, bool(args.debug))
+                write_object_file(path.with_suffix('.obj').name, [obj], target_info, bool(args.debug))
         else:
-            data, code_locations = target_link(objects, target)
+            data, code_locations = target_link(objects, target_info)
             if args.output:
                 write_image(args.output, data)
             else:

@@ -250,3 +250,6 @@ def initialize():
 
 
 initialize()
+
+def update_handlers(new_handlers: list[object]):
+    pass
