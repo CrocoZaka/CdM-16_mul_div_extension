@@ -8,7 +8,7 @@ from antlr4 import CommonTokenStream, InputStream
 
 from cocas.object_module import CodeLocation, ExternalEntry, ObjectModule, ObjectSectionRecord
 
-from assembler.target_parser import TargetInfo
+from cocas.assembler.target_parser import TargetInfo
 
 from .exceptions import AntlrErrorListener, ObjectFileException
 from .generated import ObjectFileLexer, ObjectFileParser, ObjectFileParserVisitor

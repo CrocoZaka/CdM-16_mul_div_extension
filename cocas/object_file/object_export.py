@@ -4,7 +4,7 @@ from typing import Union
 
 from cocas.object_module import CodeLocation, ExternalEntry, ObjectModule, ObjectSectionRecord
 
-from assembler.target_parser import TargetInfo
+from cocas.assembler.target_parser import TargetInfo
 
 from .targets import TargetParams, import_target
 

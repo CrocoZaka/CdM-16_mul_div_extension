@@ -7,7 +7,7 @@ import antlr4
 
 from cocas.object_module import ObjectModule
 
-from assembler.target_parser import TargetInfo
+from .target_parser import TargetInfo
 
 from .ast_builder import build_ast
 from .exceptions import AssemblerException, AssemblerExceptionTag

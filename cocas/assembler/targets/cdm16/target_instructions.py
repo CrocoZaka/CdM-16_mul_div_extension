@@ -399,7 +399,7 @@ handlers = [
                   'popc': 11, 'pusp': 12, 'posp': 13, 'pups': 14, 'pops': 15}),
     Handler(shifts, {'shl': 0, 'shr': 1, 'shra': 2, 'rol': 3, 'ror': 4, 'rcl': 5, 'rcr': 6}),
     Handler(op1, {'pop': 1, 'jsrr': 3, 'ldsp': 4, 'stsp': 5, 'ldps': 6, 'stps': 7, 'ldpc': 8, 'stpc': 9}),
-    Handler(op2, {'move': 0}),
+    Handler(op2, {'move': 0,'umul':12,'smul':13,'udiv':14, 'sdiv':15}),
     Handler(alu3_ind, {'bit': 0}),
     Handler(mem, {'ldw': 0, 'ldb': 1, 'ldsb': 2, 'lcw': 3, 'lcb': 4, 'lcsb': 5, 'stw': 6, 'stb': 7}),
     Handler(alu2, {'neg': 0, 'not': 1, 'sxt': 2, 'scl': 3}),

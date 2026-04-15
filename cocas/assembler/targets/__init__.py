@@ -1,7 +1,7 @@
 import importlib
 from pathlib import Path
 
-from assembler.target_parser import TargetInfo
+from cocas.assembler.target_parser import TargetInfo
 
 from .abstract_code_segments import IAlignedSegment, IAlignmentPaddingSegment, ICodeSegment, IVaryingLengthSegment
 from .target_instructions_protocol import TargetInstructions

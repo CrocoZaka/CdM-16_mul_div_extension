@@ -4,5 +4,5 @@ from ....cdm16.target_instructions import (
 )
 
 handlers = [
-    Handler(op2, {'udiv':12,'sdiv':13,'umul':14, 'smul':15})
+    Handler(op2, {'umul':12,'smul':13,'udiv':14, 'sdiv':15})
 ]
