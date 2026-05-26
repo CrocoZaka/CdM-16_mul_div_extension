@@ -8,8 +8,10 @@ This project extends the **CdM-16 processor architecture** by adding **hardware-
 
 The multiplication extension introduces the following instructions:
 
-* `mulu` — unsigned multiplication
-* `muls` — signed multiplication
+* `umul` — unsigned multiplication
+* `smul` — signed multiplication
+* `udiv` — unsigned division
+* `sdiv` — signed division
 
 ## How to Use
 
@@ -18,8 +20,10 @@ The multiplication extension introduces the following instructions:
 Create an assembly source file (e.g. `program.asm`) using the multiplication instructions:
 
 ```asm
-    mulu r1, r2
-    muls r3, r4
+    umul r1, r2
+    smul r3, r4
+    udiv r1, r2
+    sdiv r3, r4
 ```
 
 ### 2. Assemble the Program
